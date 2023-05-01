@@ -66,7 +66,7 @@ class ModelSpecificInfo(object):
 _MODEL_INFO = {
     "saved_model.tflite":
         ModelSpecificInfo(
-            name="MobileNetV1 image classifier",
+            name="SproutDetectV1 image classifier",
             version="v1",
             image_width=180,
             image_height=180,
@@ -75,7 +75,7 @@ _MODEL_INFO = {
             mean=[127.5],
             std=[127.5],
             num_classes=2,
-            author="Me")
+            author="Jonas Jansen")
 }
 
 
@@ -179,7 +179,8 @@ def main(_):
     raise ValueError(
         "The model info for, {0}, is not defined yet.".format(model_basename))
 
-  export_model_path = os.path.join(FLAGS.export_directory, model_basename)
+
+  export_model_path = os.path.join(FLAGS.export_directory, 'saved_model_with_meta.tflite')
 
   # Copies model_file to export_path.
   tf.io.gfile.copy(model_file, export_model_path, overwrite=False)
